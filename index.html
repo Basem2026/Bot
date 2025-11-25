@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expert Trader Landing Page</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a202c, #2d3748);
+      color: white;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .btn-primary {
+      background: #fbbf24;
+      color: #1a202c;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #f59e0b;
+    }
+    .card {
+      background: #2d3748;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-4">
+    <h1 class="section-title">Ultimate Trading Expert</h1>
+    <p class="mb-6 max-w-xl">Boost your trading performance with our advanced MT4/MT5 Expert Advisor. Automated strategies, precise signals, and complete control.</p>
+    <a href="#download" class="btn-primary">Get Started</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="px-6 py-20 bg-gray-900">
+    <h2 class="section-title text-center mb-12">Features</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="card">
+        <h3 class="text-xl font-bold mb-2">Automated Trading</h3>
+        <p>Our Expert executes trades automatically, saving you time and reducing emotional decisions.</p>
+      </div>
+      <div class="card">
+        <h3 class="text-xl font-bold mb-2">Multi-Timeframe Analysis</h3>
+        <p>Analyze multiple charts simultaneously to identify the best trading opportunities.</p>
+      </div>
+      <div class="card">
+        <h3 class="text-xl font-bold mb-2">Safe & Reliable</h3>
+        <p>Tested algorithms with built-in risk management to protect your capital.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Chart Section -->
+  <section class="px-6 py-20">
+    <h2 class="section-title text-center mb-12">Trading Performance</h2>
+    <div class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-xl">
+      <canvas id="performanceChart"></canvas>
+    </div>
+  </section>
+
+  <!-- Subscription / Download Section -->
+  <section id="download" class="px-6 py-20 bg-gray-900 text-center">
+    <h2 class="section-title mb-8">Subscribe & Download</h2>
+    <p class="mb-6 max-w-xl mx-auto">Subscribe to our newsletter to get the Expert Advisor and updates directly in your inbox.</p>
+    <form class="flex flex-col md:flex-row justify-center gap-4 mb-6">
+      <input type="email" placeholder="Your email" class="p-3 rounded-lg text-gray-900" required>
+      <button type="submit" class="btn-primary">Subscribe & Download</button>
+    </form>
+    <a href="Expert.ex4" download class="btn-primary">Direct Download EX4</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-8 text-center">
+    <p>&copy; 2025 Your Trading Expert. All rights reserved.</p>
+    <div class="flex justify-center gap-4 mt-4">
+      <a href="#" class="hover:text-yellow-400">Twitter</a>
+      <a href="#" class="hover:text-yellow-400">Telegram</a>
+      <a href="#" class="hover:text-yellow-400">Discord</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // GSAP Animations
+    gsap.from("h1", { y: -50, opacity: 0, duration: 1 });
+    gsap.from("p", { y: 20, opacity: 0, duration: 1, delay: 0.5 });
+    gsap.from(".btn-primary", { scale: 0, duration: 0.8, delay: 1 });
+
+    // Chart.js Example
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8'],
+        datasets: [{
+          label: 'Equity Growth ($)',
+          data: [1000, 1200, 1500, 1300, 1600, 1800, 2000, 2300],
+          borderColor: '#fbbf24',
+          backgroundColor: 'rgba(251,191,36,0.2)',
+          fill: true,
+          tension: 0.4,
+          pointRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { color: 'white' } }
+        },
+        scales: {
+          x: { ticks: { color: 'white' } },
+          y: { ticks: { color: 'white' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
